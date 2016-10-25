@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Quote Book</title>
+    <style>
+
+    .fullQuote {
+      padding: 8px 5px;;
+      border-bottom: black solid 2px;
+    }
+    .quoteAuthor {
+      font-style: italic;
+      padding-right: 40px;
+    }
+
+    .quoteText {
+      font-weight: bold;
+    }
+
+    button {
+      border: none;
+      font-size: 16px;
+    }
+    button:hover {
+      cursor: pointer;
+    }
+
+    .flrt {
+      float:right;
+      /*padding-right: 80px;*/
+    }
+
+    .heading{
+      padding: 10px 100px;
+    }
+
+    input {
+      margin: 5px;
+      padding: 5px;
+    }
+    </style>
+  </head>
+  <body ng-controller="mainControl">
+
+
+<!-- {{thisAppIsBroken}} -->
+
+<!-- <div data-ng-repeat="quote in quotes track by $index">
+
+   <span class="quoteText">{{quote.text}}</span> - <span class="quoteAuthor">{{quote.author}}</span>
+   <button data-ng-click="deleteMe(quote.text)">Delete</button>
+</div> -->
+<div class="heading">
+  <h1>Add your own quote!</h1>
+<input type="text" placeholder="Add new quote!" data-ng-model="newQuoteText"></input>
+<input type="text" placeholder="Add new author!" data-ng-model="newQuoteAuthor"></input>
+<button type="button" name="button" data-ng-click="addQuote()">Add Quote</button>
+
+
+  <div class="flrt">
+    Filter:  <input type="text" placeholder="Search" data-ng-model="filterText">
+  </div>
+</div>
+<br />
+<br />
+<br />
+
+
+<div data-ng-repeat="quote in quotes | filter: filterText" class="fullQuote">
+
+   <span class="quoteText">{{quote.text}}</span> - <span class="quoteAuthor">{{quote.author}}</span>
+   <button data-ng-click="deleteMe(quote.text)">Delete</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/mainControl.js"></script>
+    <script src="js/mainService.js"></script>
+  </body>
+</html>
